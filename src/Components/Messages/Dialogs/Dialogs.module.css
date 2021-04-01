@@ -1,3 +1,40 @@
 .dialogs {
-
+    display: grid;
+    grid-column: 12;
+    column-gap: 10px;
 }
+
+.dialogsItems {
+    grid-column: 1/2;
+}
+
+.dialogsMessages {
+    grid-column: 3/12;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

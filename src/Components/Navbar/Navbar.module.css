@@ -5,16 +5,23 @@
     background: #535353;
 }
 
-a {
-    text-decoration: none;
-    color: white;
-}
-
 .navbarItem {
     text-transform: uppercase;
-    padding: 10px 0;
+    padding: 3px 0;
 }
 
-.navbarItem.active {
-    text-decoration: underline;
+.navbarItem__link {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
 }
+
+.navbarItem a.active {
+    background: #cccccc;
+    color: #000;
+    border-radius: 4px;
+}
+

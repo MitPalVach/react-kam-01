@@ -1,25 +1,32 @@
 import React from "react";
 import styles from './Dialogs.module.css';
+import {NavLink} from "react-router-dom";
+import DialogItem from "../DialogItem/DialogItem";
+import Message from "../Message/Message";
 
 
-const Dialogs = () => {
+const Dialogs = (props) => {
     return (
         <div className={styles.dialogs}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aspernatur dicta enim ex, ipsam
-            laudantium nesciunt numquam pariatur repellendus sequi tempore totam vel veritatis voluptas voluptatum.
-            Debitis maxime perferendis ratione sequi voluptas, voluptates. Lorem ipsum dolor sit amet, consectetur
-            adipisicing elit. Modi, nisi voluptates. Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
-            aperiam autem dolore dolores doloribus ex ipsa libero nemo odio optio, perspiciatis quod reprehenderit,
-            ullam? Aliquid animi consectetur distinctio facilis incidunt ipsa itaque modi molestias pariatur,
-            perspiciatis quis rem tenetur totam veritatis voluptatibus! Accusantium aliquid architecto assumenda at
-            consectetur dolores, facilis fugit laboriosam, libero molestiae nesciunt odio pariatur possimus quod quos
-            saepe tempora vel voluptatum. Beatae consequuntur corporis culpa cum cupiditate dicta dolorum ea eaque
-            eligendi, enim esse ex excepturi fugit in incidunt ipsa ipsum laboriosam magnam maiores mollitia natus odit
-            officia porro quae quibusdam quo saepe sit sunt temporibus voluptatem? Ab ad amet ipsa itaque quod sint.
-            Culpa incidunt possimus tenetur? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores
-            consectetur consequatur et fugiat inventore omnis, quam quasi qui saepe, similique sint temporibus vel
-            voluptatibus? Dignissimos distinctio esse illo laborum pariatur praesentium quod vitae? Esse fugiat ipsam,
-            maiores molestias provident totam voluptatem. Odio saepe, tempora.
+            <div className={styles.dialogsItems}>
+
+                <DialogItem name='Неясыть' id='1'/>
+                <DialogItem name='Филин' id='2'/>
+                <DialogItem name='Полярная сова' id='3'/>
+                <DialogItem name='Обыкновенная сипуха' id='4'/>
+                <DialogItem name='Рыбный филин' id='5'/>
+                <DialogItem name='Ушастая сова' id='6'/>
+                <DialogItem name='Ястребиная сова' id='7'/>
+                <DialogItem name='Иглоногая сова' id='8'/>
+                <DialogItem name='Совка-сплюшка' id='9'/>
+
+            </div>
+            <div className={styles.dialogsMessages}>
+                <Message message='Привет, погнали мышей заточим?'/>
+                <Message message='Здарова, как дел?'/>
+                <Message message='Не пиши мне больше!!!'/>
+                <Message message='Куда летал вчера?'/>
+            </div>
         </div>
     )
 }
