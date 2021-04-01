@@ -1,31 +1,41 @@
 import React from "react";
 import styles from './Dialogs.module.css';
-import {NavLink} from "react-router-dom";
 import DialogItem from "../DialogItem/DialogItem";
 import Message from "../Message/Message";
 
 
 const Dialogs = (props) => {
+    let dialogItemsData = [
+        {id: 1, name: 'Неясыть'},
+        {id: 2, name: 'Филин'},
+        {id: 3, name: 'Полярная сова'},
+        {id: 4, name: 'Обыкновенная сипуха'},
+        {id: 5, name: 'Рыбный филин'},
+        {id: 6, name: 'Ушастая сова'},
+        {id: 7, name: 'Ястребиная сова'},
+        {id: 8, name: 'Иглоногая сова'},
+        {id: 9, name: 'Совка-сплюшка'}
+    ]
+
+    let dialogMessagesData = [
+        {id: 1, message: 'Привет, погнали мышей заточим?'},
+        {id: 2, message: 'Здарова, как дел?'},
+        {id: 3, message: 'Не пиши мне больше!!!'},
+        {id: 4, message: 'Куда летал вчера?'},
+        {id: 5, message: 'Слетаем к сычу?'},
+    ]
+
+    let dialogItemElements = dialogItemsData.map(d => <DialogItem name={d.name} id={d.id}/>);
+
+    let dialogMessagesElements = dialogMessagesData.map(m => <Message message={m.message}/>);
+
     return (
         <div className={styles.dialogs}>
             <div className={styles.dialogsItems}>
-
-                <DialogItem name='Неясыть' id='1'/>
-                <DialogItem name='Филин' id='2'/>
-                <DialogItem name='Полярная сова' id='3'/>
-                <DialogItem name='Обыкновенная сипуха' id='4'/>
-                <DialogItem name='Рыбный филин' id='5'/>
-                <DialogItem name='Ушастая сова' id='6'/>
-                <DialogItem name='Ястребиная сова' id='7'/>
-                <DialogItem name='Иглоногая сова' id='8'/>
-                <DialogItem name='Совка-сплюшка' id='9'/>
-
+                {dialogItemElements}
             </div>
             <div className={styles.dialogsMessages}>
-                <Message message='Привет, погнали мышей заточим?'/>
-                <Message message='Здарова, как дел?'/>
-                <Message message='Не пиши мне больше!!!'/>
-                <Message message='Куда летал вчера?'/>
+                {dialogMessagesElements}
             </div>
         </div>
     )
