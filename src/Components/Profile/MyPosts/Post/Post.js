@@ -8,8 +8,8 @@ const Post = (props) => {
         <div className={styles.postsItem}>
             <div className={styles.postsItem__inner}>
                 <img className={styles.postsItem__avatar}
-                     src="https://cs13.pikabu.ru/avatars/3173/x3173765-1776853641.png"
-                     alt=""/>
+                     src="img/avatar_to_all.png"
+                     alt="avatar_to_all"/>
                 <div className={styles.postsItem__messages}>
                     {props.message}
                 </div>

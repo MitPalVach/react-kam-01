@@ -5,17 +5,22 @@
 }
 
 .postsItem__inner {
-
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 .postsItem__avatar {
-    width: 80px;
+    max-width: 80px;
+    max-height: 80px;
     border: 2px solid #ffffff;
     margin-right: 20px;
+    object-fit: cover;
 }
 
 .postsItem__messages {
     display: inline-block;
+    padding: 10px;
 }
 
 .postsItem__activity {
@@ -34,4 +39,5 @@
 .postsItem__send {
     font-size: 15px;
     cursor: pointer;
+    color: #535353;
 }

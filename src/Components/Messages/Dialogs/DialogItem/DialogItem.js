@@ -11,7 +11,6 @@ const DialogItem = (props) => {
                      to={"/dialogs/" + props.id} activeClassName={styles.active}>
                 {props.name}</NavLink>
         </div>
-
     )
 }
 
