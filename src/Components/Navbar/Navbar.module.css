@@ -10,14 +10,22 @@
     padding: 3px 0;
 }
 
+.navbarItem:hover :after{
+    content: '  🦉';
+    font-size: 20px;
+    line-height: 20px;
+}
+
 .navbarItem__link {
     display: block;
-    font-size: 16px;
+    font-size: 20px;
+    line-height: 20px;
     font-weight: 500;
     text-decoration: none;
     color: white;
     padding: 10px;
 }
+
 
 .navbarItem a.active {
     background: #cccccc;
@@ -25,3 +33,6 @@
     border-radius: 4px;
 }
 
+.friendsOnline {
+
+}

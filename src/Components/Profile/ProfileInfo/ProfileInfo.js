@@ -3,7 +3,19 @@ import React from "react";
 import styles from './ProfileInfo.module.css';
 
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+    let newPostElem = React.createRef();
+
+    let addPost = () => {
+        props.addPost();
+    }
+
+    let onPostChange = () => {
+        let text = newPostElem.current.value;
+        props.updateNewPostText(text);
+    }
+
     return (
         <div>
             <div>
@@ -16,8 +28,10 @@ const ProfileInfo = () => {
                      src="img/avatar.jpeg" alt="avatar"/>
             </div>
             <div className={styles.myPosts}>
-                <textarea className={styles.myPosts__input} placeholder='Введите сообщение...'/>
-                <button className={styles.myPosts__button}>Отправить</button>
+                <textarea ref={newPostElem} onChange={onPostChange} value={props.newPostText}
+                          className={styles.myPosts__input}
+                          placeholder='Введите сообщение...'/>
+                <button onClick={addPost} className={styles.myPosts__button}>Добавить на страницу</button>
             </div>
         </div>
     )

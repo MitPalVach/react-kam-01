@@ -1,10 +1,12 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import FriendsOnline from "./FriendsOnline/FriendsOnline";
 
 import styles from './Navbar.module.css';
 
 
-const Navbar = () => {
+const Navbar = (props) => {
+    // console.log(props);
     return (
         <nav className={styles.navbar}>
             <div className={styles.navbarItem}>
@@ -46,6 +48,9 @@ const Navbar = () => {
                 <NavLink className={styles.navbarItem__link}
                          to={"/settings"} activeClassName={styles.active}>
                     Настройки</NavLink>
+            </div>
+            <div className={styles.friendsOnline}>
+                <FriendsOnline online={props.friendsOnline.sitebar}/>
             </div>
         </nav>
     )
