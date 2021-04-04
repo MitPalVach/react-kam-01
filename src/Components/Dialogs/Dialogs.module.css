@@ -1,20 +1,47 @@
 .dialogs {
-    display: grid;
-    grid-column: 12;
-    column-gap: 10px;
+    display: flex;
+
 }
 
-.dialogsItems {
-    grid-column: 1/2;
+.dialogsUsers {
+
+}
+
+.dialogsMessages__wrapper {
+    width: 100%;
 }
 
 .dialogsMessages {
-    grid-column: 3/12;
+
 }
 
+.dialogsMessages__inner {
 
+}
 
+.dialogsMessages__input {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 4px 10px;
+}
 
+.dialogsMessages__btn {
+
+}
+
+.dialogsMessages__btn {
+    border: none;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: #535353;
+    cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
 
 
 

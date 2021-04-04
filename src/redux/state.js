@@ -1,5 +1,4 @@
 let store = {
-
     _state: {
         profilePage: {
             posts: [
@@ -33,7 +32,9 @@ let store = {
                 {id: 3, message: 'Не пиши мне больше!!!'},
                 {id: 4, message: 'Куда летал вчера?'},
                 {id: 5, message: 'Слетаем к сычу?'}
-            ]
+            ],
+            newMessageBody: ''
+
         },
         friendsOnline: {
             sitebar: [
@@ -43,51 +44,52 @@ let store = {
             ]
         }
     },
-    
-    getState() {
+
+    _callSubscriber() {
+        console.log('State changed');
+    },
+
+    getState() {  // возможность обратиться к state
         return this._state;
     },
 
-    _callSubscriber()  {
-        console.log('State changed');
-    },
-    
-    addPost(){
-        let newPost = {
-            id: 10,
-            message: this._state.profilePage.newPostText,
-            likeCount: 0
-        };
-        this._state.profilePage.posts.unshift(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-
-    updateNewPostText (newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
-
-    subscribe (observer) {
+    subscribe(observer) {  // наблюдатель
         this._callSubscriber = observer;
+    },
+
+    // =====
+    dispatch(action) {  // dispatch(отправлять) (action - объект, {type: example-> 'ADD-POST'})
+        if (action.type === 'ADD-POST') {
+            let newPost = {
+                id: 10,
+                message: this._state.profilePage.newPostText,
+                likeCount: 0
+            };
+            this._state.profilePage.posts.unshift(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-BODY') {
+            this._state.dialogsPage.newMessageBody = action.body;
+            this._callSubscriber(this._state);
+        } else if (action.type === 'SEND-MESSAGE') {
+            let body = this._state.dialogsPage.newMessageBody;
+            this._state.dialogsPage.newMessageBody = '';
+            this._state.dialogsPage.messages.unshift({id: 6, message: body});
+            this._callSubscriber(this._state);
+        }
     }
-
 }
+
+export const addPostActionCreator = () => ({type: 'ADD-POST'})
+export const updateNewPostTextActionCreator = (text) => ({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+export const updateNewMessageBodyCreator = (body) => ({type: 'UPDATE-NEW-MESSAGE-BODY', body: body})
+export const sendMessageCreator = () => ({type: 'SEND-MESSAGE'})
+
+
 export default store;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
