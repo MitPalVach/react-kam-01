@@ -6,7 +6,6 @@ import styles from './Navbar.module.css';
 
 
 const Navbar = (props) => {
-    // console.log(props);
     return (
         <nav className={styles.navbar}>
             <div className={styles.navbarItem}>
@@ -50,7 +49,7 @@ const Navbar = (props) => {
                     Настройки</NavLink>
             </div>
             <div className={styles.friendsOnline}>
-                <FriendsOnline online={props.friendsOnline.sitebar}/>
+                <FriendsOnline online={props.friendsOnline.sidebar}/>
             </div>
         </nav>
     )

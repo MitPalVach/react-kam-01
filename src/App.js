@@ -9,6 +9,7 @@ import styles from './App.module.css'
 
 
 const App = (props) => {
+    // debugger;
     return (
         <div className={styles.container}>
             <div className={styles.app__wrapper}>

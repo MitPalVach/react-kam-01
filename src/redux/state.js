@@ -1,3 +1,7 @@
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+import sidebarReducer from "./sidebarReducer";
+
 let store = {
     _state: {
         profilePage: {
@@ -37,7 +41,7 @@ let store = {
 
         },
         friendsOnline: {
-            sitebar: [
+            sidebar: [
                 {id: 1, name: 'Неясыть', ava: 'img/ava_1.png'},
                 {id: 2, name: 'Филин', ava: 'img/ava_2.png'},
                 {id: 3, name: 'Полярная сова', ava: 'img/ava_3.png'}
@@ -59,34 +63,15 @@ let store = {
 
     // =====
     dispatch(action) {  // dispatch(отправлять) (action - объект, {type: example-> 'ADD-POST'})
-        if (action.type === 'ADD-POST') {
-            let newPost = {
-                id: 10,
-                message: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
-            this._state.profilePage.posts.unshift(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === 'UPDATE-NEW-MESSAGE-BODY') {
-            this._state.dialogsPage.newMessageBody = action.body;
-            this._callSubscriber(this._state);
-        } else if (action.type === 'SEND-MESSAGE') {
-            let body = this._state.dialogsPage.newMessageBody;
-            this._state.dialogsPage.newMessageBody = '';
-            this._state.dialogsPage.messages.unshift({id: 6, message: body});
-            this._callSubscriber(this._state);
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
+        this._callSubscriber(this._state);
+
     }
 }
-
-export const addPostActionCreator = () => ({type: 'ADD-POST'})
-export const updateNewPostTextActionCreator = (text) => ({type: 'UPDATE-NEW-POST-TEXT', newText: text})
-export const updateNewMessageBodyCreator = (body) => ({type: 'UPDATE-NEW-MESSAGE-BODY', body: body})
-export const sendMessageCreator = () => ({type: 'SEND-MESSAGE'})
 
 
 export default store;
