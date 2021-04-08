@@ -1,5 +1,4 @@
 import React from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profileReducer";
 
 import styles from './ProfileInfo.module.css';
 
@@ -8,14 +7,14 @@ const ProfileInfo = (props) => {
 
     let newPostElem = React.createRef();
 
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     }
 
     let onPostChange = () => {
         let text = newPostElem.current.value;
-        let action = updateNewPostTextActionCreator(text);
-        props.dispatch(action);
+        props.updateNewPostText(text);
+
     }
 
     return (
@@ -33,7 +32,7 @@ const ProfileInfo = (props) => {
                 <textarea ref={newPostElem} onChange={onPostChange} value={props.newPostText}
                           className={styles.myPosts__input}
                           placeholder='Введите сообщение...'/>
-                <button onClick={addPost} className={styles.myPosts__button}>Добавить на страницу</button>
+                <button onClick={onAddPost} className={styles.myPosts__button}>Добавить на страницу</button>
             </div>
         </div>
     )
