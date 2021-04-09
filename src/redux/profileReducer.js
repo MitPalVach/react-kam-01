@@ -1,3 +1,6 @@
+let addPost =  'ADD-POST';
+let updateNewPostText = 'UPDATE-NEW-POST-TEXT';
+
 let initialState = {
     posts: [
         {id: 1, message: 'Привет, как ты?', likeCount: 14},
@@ -35,8 +38,8 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = () => ({type: 'ADD-POST'})
-export const updateNewPostTextActionCreator = (text) => ({type: 'UPDATE-NEW-POST-TEXT', newText: text})
+export const addPostActionCreator = () => ({type: addPost})
+export const updateNewPostTextActionCreator = (text) => ({type: updateNewPostText, newText: text})
 
 
 export default profileReducer;

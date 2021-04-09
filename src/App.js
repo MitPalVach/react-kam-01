@@ -1,3 +1,4 @@
+import styles from './App.module.css'
 import React from 'react';
 import {Route} from "react-router-dom";
 import Header from "./Components/Header/Header";
@@ -6,21 +7,16 @@ import Profile from "./Components/Profile/Profile";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 
 
-import styles from './App.module.css'
-
-
-const App = (props) => {
-// console.log(props);
-    // debugger;
+const App = () => {
     return (
         <div className={styles.container}>
             <div className={styles.app__wrapper}>
                 <Header/>
-                <Navbar friendsOnline={props.state.friendsOnline}/>
+                <Navbar />
                 <div className={styles.content__wrapper}>
                     <div className={styles.content__inner}>
-                        <Route path='/profile' render={() => <Profile store={props.store}/>}/>
-                        <Route path='/dialogs' render={() => <DialogsContainer store={props.store}/>}/>
+                        <Route path='/profile' render={() => <Profile />}/>
+                        <Route path='/dialogs' render={() => <DialogsContainer />}/>
                     </div>
                 </div>
             </div>

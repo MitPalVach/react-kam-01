@@ -1,11 +1,10 @@
+import styles from './Navbar.module.css';
 import React from "react";
 import {NavLink} from "react-router-dom";
-import FriendsOnline from "./FriendsOnline/FriendsOnline";
-
-import styles from './Navbar.module.css';
+import FriendsOnlineContainer from "./FriendsOnline/FriendsOnlineContainer";
 
 
-const Navbar = (props) => {
+const Navbar = () => {
     return (
         <nav className={styles.navbar}>
             <div className={styles.navbarItem}>
@@ -49,7 +48,7 @@ const Navbar = (props) => {
                     Настройки</NavLink>
             </div>
             <div className={styles.friendsOnline}>
-                <FriendsOnline online={props.friendsOnline.sidebar}/>
+                <FriendsOnlineContainer />
             </div>
         </nav>
     )

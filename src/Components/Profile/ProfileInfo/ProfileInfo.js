@@ -1,6 +1,5 @@
-import React from "react";
-
 import styles from './ProfileInfo.module.css';
+import React from "react";
 
 
 const ProfileInfo = (props) => {
@@ -14,7 +13,6 @@ const ProfileInfo = (props) => {
     let onPostChange = () => {
         let text = newPostElem.current.value;
         props.updateNewPostText(text);
-
     }
 
     return (

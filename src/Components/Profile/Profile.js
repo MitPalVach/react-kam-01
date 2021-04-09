@@ -3,14 +3,12 @@ import ProfileInfoContainer from "./ProfileInfo/ProfileInfoContainer";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
-const Profile = (props) => {
-    // debugger;
-    console.log(props);
+const Profile = () => {
     return (
         <div>
-            <ProfileInfoContainer store={props.store}/>
+            <ProfileInfoContainer />
 
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer />
         </div>
     )
 }

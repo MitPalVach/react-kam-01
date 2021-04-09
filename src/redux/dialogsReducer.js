@@ -1,3 +1,6 @@
+let updateNewMessageBody = 'UPDATE-NEW-MESSAGE-BODY';
+let sendMessage = 'SEND-MESSAGE';
+
 let initialState = {
     dialogs: [
         {id: 1, name: 'Неясыть', avatar: 'img/friends_avatars/sova-neyasyt.jpeg'},
@@ -23,10 +26,10 @@ let initialState = {
 const dialogsReducer = (state=initialState, action) => {
 
     switch (action.type) {
-        case 'UPDATE-NEW-MESSAGE-BODY':
+        case updateNewMessageBody:
             state.newMessageBody = action.body;
             return state;
-        case 'SEND-MESSAGE':
+        case sendMessage:
             let body = state.newMessageBody;
             state.newMessageBody = '';
             state.messages.unshift({id: 6, message: body});
@@ -36,7 +39,7 @@ const dialogsReducer = (state=initialState, action) => {
     }
 }
 
-export const updateNewMessageBodyCreator = (body) => ({type: 'UPDATE-NEW-MESSAGE-BODY', body: body})
-export const sendMessageCreator = () => ({type: 'SEND-MESSAGE'})
+export const sendMessageCreator = () => ({type: sendMessage})
+export const updateNewMessageBodyCreator = (body) => ({type: updateNewMessageBody, body: body})
 
 export default dialogsReducer;

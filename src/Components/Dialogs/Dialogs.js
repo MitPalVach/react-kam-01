@@ -1,18 +1,15 @@
+import styles from './Dialogs.module.css';
 import React from "react";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
-import styles from './Dialogs.module.css';
-
 
 const Dialogs = (props) => {
-
-
-    let dialogsElements = props.state.dialogs.map(d =>
+// debugger;
+    let dialogsElements = props.dialogsPage.dialogs.map(d =>
         <DialogItem key={d.id} name={d.name} id={d.id} friendsAvatar={d.avatar}/>);
-    let messagesElements = props.state.messages.map(m =>
+    let messagesElements = props.dialogsPage.messages.map(m =>
         <Message key={m.id} message={m.message} id={m.id}/>);
-
 
     return (
         <div className={styles.dialogs}>
@@ -25,11 +22,11 @@ const Dialogs = (props) => {
                 </div>
                 <div className={styles.dialogsMessages__inner}>
                     <textarea value={props.newMessageBody}
-                              onChange={props.onNewMessageChange}
+                              onChange={props.updateNewMessageBody}
                               className={styles.dialogsMessages__input}
                               placeholder='Введите сообщение...'/>
                     <button className={styles.dialogsMessages__btn}
-                            onClick={props.onSendMessageClick}>
+                            onClick={props.sendMessage}>
                         Написать
                     </button>
                 </div>
