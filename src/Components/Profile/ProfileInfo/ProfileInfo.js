@@ -27,7 +27,7 @@ const ProfileInfo = (props) => {
                      src="img/avatar.jpeg" alt="avatar"/>
             </div>
             <div className={styles.myPosts}>
-                <textarea ref={newPostElem} onChange={onPostChange} value={props.newPostText}
+                <textarea ref={newPostElem} onChange={onPostChange} value={props.profilePage.newPostText}
                           className={styles.myPosts__input}
                           placeholder='Введите сообщение...'/>
                 <button onClick={onAddPost} className={styles.myPosts__button}>Добавить на страницу</button>

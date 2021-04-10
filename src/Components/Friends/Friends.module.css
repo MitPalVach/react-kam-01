@@ -1,0 +1,49 @@
+.friendsWrapper {
+    display: flex;
+}
+
+.friends__leftSide {
+text-align: center;
+    margin-right: 30px;
+}
+
+.friendsPhoto {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10%;
+    border: #ffffff 2px solid;
+}
+
+.friendsBtn {
+    border: none;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: #535353;
+    cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+.friends__rightSide {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

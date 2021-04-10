@@ -23,17 +23,23 @@ let initialState = {
     newMessageBody: ''
 };
 
-const dialogsReducer = (state=initialState, action) => {
-
+const dialogsReducer = (state = initialState, action) => {
+// debugger;
     switch (action.type) {
-        case updateNewMessageBody:
-            state.newMessageBody = action.body;
-            return state;
-        case sendMessage:
+        case updateNewMessageBody: {
+            return {
+                ...state,
+                newMessageBody: action.body
+            };
+        }
+        case sendMessage: {
             let body = state.newMessageBody;
-            state.newMessageBody = '';
-            state.messages.unshift({id: 6, message: body});
-            return state;
+            return {
+                newMessageBody: '',
+                ...state,
+                messages: [{id: 6, message: body}, ...state.messages],
+            };
+        }
         default:
             return state;
     }

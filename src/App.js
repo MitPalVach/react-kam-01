@@ -5,6 +5,7 @@ import Header from "./Components/Header/Header";
 import Navbar from "./Components/Navbar/Navbar";
 import Profile from "./Components/Profile/Profile";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import FriendsContainer from "./Components/Friends/FriendsContainer";
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
                     <div className={styles.content__inner}>
                         <Route path='/profile' render={() => <Profile />}/>
                         <Route path='/dialogs' render={() => <DialogsContainer />}/>
+                        <Route path='/friends' render={() => <FriendsContainer />}/>
                     </div>
                 </div>
             </div>
