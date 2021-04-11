@@ -32,7 +32,10 @@ text-align: center;
 
 }
 
-
+.selectedPage {
+    font-weight: 700;
+    text-decoration: underline;
+}
 
 
 
