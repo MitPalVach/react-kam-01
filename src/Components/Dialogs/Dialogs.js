@@ -5,11 +5,23 @@ import Message from "./Message/Message";
 
 
 const Dialogs = (props) => {
+    // debugger;
     let state = props.dialogsPage;
     let dialogsElements = state.dialogs.map(d =>
         <DialogItem key={d.id} name={d.name} id={d.id} friendsAvatar={d.avatar}/>);
     let messagesElements = state.messages.map(m =>
         <Message key={m.id} message={m.message} id={m.id}/>);
+
+    let newMessageBody = state.newMessageBody;
+
+    let onSendMessage = () => {
+        props.sendMessage();
+    }
+
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        props.updateNewMessageBody(body);
+    }
 
     return (
         <div className={styles.dialogs}>
@@ -21,12 +33,12 @@ const Dialogs = (props) => {
                     {messagesElements}
                 </div>
                 <div className={styles.dialogsMessages__inner}>
-                    <textarea value={props.newMessageBody}
-                              onChange={props.updateNewMessageBody}
+                    <textarea value={newMessageBody}
+                              onChange={onNewMessageChange}
                               className={styles.dialogsMessages__input}
                               placeholder='Введите сообщение...'/>
                     <button className={styles.dialogsMessages__btn}
-                            onClick={props.sendMessage}>
+                            onClick={onSendMessage}>
                         Написать
                     </button>
                 </div>

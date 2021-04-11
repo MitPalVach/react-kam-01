@@ -2,6 +2,7 @@ import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
 import sidebarReducer from "./sidebarReducer";
 
+
 let store = {
     _state: {
         profilePage: {
@@ -38,7 +39,6 @@ let store = {
                 {id: 5, message: 'Слетаем к сычу?'}
             ],
             newMessageBody: ''
-
         },
         friendsOnline: {
             sidebar: [
@@ -53,26 +53,21 @@ let store = {
         console.log('State changed');
     },
 
-    getState() {  // возможность обратиться к state
+    getState() {
         return this._state;
     },
 
-    subscribe(observer) {  // наблюдатель
+    subscribe(observer) {
         this._callSubscriber = observer;
     },
 
-    // =====
-    dispatch(action) {  // dispatch(отправлять) (action - объект, {type: example-> 'ADD-POST'})
-
+    dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
         this._state.sidebar = sidebarReducer(this._state.sidebar, action);
-
         this._callSubscriber(this._state);
-
     }
 }
-
 
 export default store;
 
