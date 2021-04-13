@@ -6,8 +6,7 @@ const setTotalFriendsCount = 'SET_TOTAL_FRIENDS_COUNT';
 
 
 let initialState = {
-    friends:
-        [],
+    friends: [],
     //     [
     //     {
     //         id: 1,
@@ -154,9 +153,9 @@ let initialState = {
     //         photoUrl: 'img/friends_avatars/sovka-splushka.jpeg'
     //     }
     // ],
-    pageSize: 10,
-    totalFriendsCount: 0,
-    currentPage: 2
+    pageSize: 5,
+    totalFriendsCount: 30,
+    currentPage: 3
 
 };
 
@@ -201,7 +200,7 @@ export const followAC = (userId) => ({type: follow, userId});
 export const unfollowAC = (userId) => ({type: unfollow, userId});
 export const setFriendsAC = (friends) => ({type: setFriends, friends});
 export const setCurrentPageAC = (currentPage) => ({type: setCurrentPage, currentPage});
-export const setFriendsTotalCountAC = (totalFriendsCount) => ({type: setTotalFriendsCount, totalFriendsCount});
+export const setTotalFriendsCountAC = (totalFriendsCount) => ({type: setTotalFriendsCount, totalFriendsCount});
 
 
 export default friendsReducer;
