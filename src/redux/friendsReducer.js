@@ -1,164 +1,18 @@
-const follow = 'FOLLOW';
-const unfollow = 'UNFOLLOW';
-const setFriends = 'SET_FRIENDS';
-const setCurrentPage = 'SET_CURRENT_PAGE';
-const setTotalFriendsCount = 'SET_TOTAL_FRIENDS_COUNT';
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW = 'UNFOLLOW';
+const SET_FRIENDS = 'SET_FRIENDS';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const SET_TOTAL_FRIENDS_COUNT = 'SET_TOTAL_FRIENDS_COUNT';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 
 let initialState = {
     friends: [],
-    //     [
-    //     {
-    //         id: 1,
-    //         followed: true,
-    //         fullName: 'Неясыть',
-    //         status: 'Спасибо, я сыт!',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/sova-neyasyt.jpeg'
-    //     },
-    //     {
-    //         id: 2,
-    //         followed: false,
-    //         fullName: 'Филин',
-    //         status: 'Я ленивая жопа',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/filin.jpeg'
-    //     },
-    //     {
-    //         id: 3,
-    //         followed: true,
-    //         fullName: 'Полярная сова',
-    //         status: 'Холодно, пздц',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/polyarnaya-belaya-sova.jpeg'
-    //     },
-    //     {
-    //         id: 4,
-    //         followed: false,
-    //         fullName: 'Обыкновенная сипуха',
-    //         status: 'Самая обыкновенная сипуха',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/sipuha.jpeg'
-    //     },
-    //     {
-    //         id: 5,
-    //         followed: false,
-    //         fullName: 'Рыбный филин',
-    //         status: 'Люблю совят и рыбку',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/rybniy-filin.jpeg'
-    //     },
-    //     {
-    //         id: 6,
-    //         followed: true,
-    //         fullName: 'Ушастая сова',
-    //         status: 'Меня штырит!!!',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/ushastaya-sova.jpeg'
-    //     },
-    //     {
-    //         id: 7,
-    //         followed: true,
-    //         fullName: 'Ястребиная сова',
-    //         status: 'HawkEye',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/yastrebinnaya-sova.jpeg'
-    //     },
-    //     {
-    //         id: 8,
-    //         followed: false,
-    //         fullName: 'Иглоногая сова',
-    //         status: 'Я колючка',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/iglononogaya-sova.jpeg'
-    //     },
-    //     {
-    //         id: 9,
-    //         followed: true,
-    //         fullName: 'Совка-сплюшка',
-    //         status: 'Спать хочу',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/sovka-splushka.jpeg'
-    //     },
-    //     {
-    //         id: 10,
-    //         followed: true,
-    //         fullName: 'Неясыть',
-    //         status: 'Спасибо, я сыт!',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/sova-neyasyt.jpeg'
-    //     },
-    //     {
-    //         id: 11,
-    //         followed: false,
-    //         fullName: 'Филин',
-    //         status: 'Я ленивая жопа',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/filin.jpeg'
-    //     },
-    //     {
-    //         id: 12,
-    //         followed: true,
-    //         fullName: 'Полярная сова',
-    //         status: 'Холодно, пздц',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/polyarnaya-belaya-sova.jpeg'
-    //     },
-    //     {
-    //         id: 13,
-    //         followed: false,
-    //         fullName: 'Обыкновенная сипуха',
-    //         status: 'Самая обыкновенная сипуха',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/sipuha.jpeg'
-    //     },
-    //     {
-    //         id: 14,
-    //         followed: false,
-    //         fullName: 'Рыбный филин',
-    //         status: 'Люблю совят и рыбку',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/rybniy-filin.jpeg'
-    //     },
-    //     {
-    //         id: 15,
-    //         followed: true,
-    //         fullName: 'Ушастая сова',
-    //         status: 'Меня штырит!!!',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/ushastaya-sova.jpeg'
-    //     },
-    //     {
-    //         id: 16,
-    //         followed: true,
-    //         fullName: 'Ястребиная сова',
-    //         status: 'HawkEye',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/yastrebinnaya-sova.jpeg'
-    //     },
-    //     {
-    //         id: 17,
-    //         followed: false,
-    //         fullName: 'Иглоногая сова',
-    //         status: 'Я колючка',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/iglononogaya-sova.jpeg'
-    //     },
-    //     {
-    //         id: 18,
-    //         followed: true,
-    //         fullName: 'Совка-сплюшка',
-    //         status: 'Спать хочу',
-    //         location: {city: 'Казань', country: 'Россия'},
-    //         photoUrl: 'img/friends_avatars/sovka-splushka.jpeg'
-    //     }
-    // ],
     pageSize: 5,
     totalFriendsCount: 30,
-    currentPage: 3
-
+    currentPage: 1,
+    isFetching: true
 };
-
 
 const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -191,16 +45,27 @@ const friendsReducer = (state = initialState, action) => {
         case setTotalFriendsCount: {
             return {...state, totalFriendsCount: action.totalFriendsCount}
         }
+        case toggleIsFetching: {
+            return {...state, isFetching: action.isFetching}
+        }
         default:
             return state;
     }
 }
 
-export const followAC = (userId) => ({type: follow, userId});
-export const unfollowAC = (userId) => ({type: unfollow, userId});
-export const setFriendsAC = (friends) => ({type: setFriends, friends});
-export const setCurrentPageAC = (currentPage) => ({type: setCurrentPage, currentPage});
-export const setTotalFriendsCountAC = (totalFriendsCount) => ({type: setTotalFriendsCount, totalFriendsCount});
+export const follow = (userId) => ({type: FOLLOW, userId});
+export const unfollow = (userId) => ({type: UNFOLLOW, userId});
+export const setFriends = (friends) => ({type: SET_FRIENDS, friends});
+export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalFriendsCount = (totalFriendsCount) => ({type: SET_TOTAL_FRIENDS_COUNT, totalFriendsCount});
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
+// export const followAC = (userId) => ({type: follow, userId});
+// export const unfollowAC = (userId) => ({type: unfollow, userId});
+// export const setFriendsAC = (friends) => ({type: setFriends, friends});
+// export const setCurrentPageAC = (currentPage) => ({type: setCurrentPage, currentPage});
+// export const setTotalFriendsCountAC = (totalFriendsCount) => ({type: setTotalFriendsCount, totalFriendsCount});
+// export const toggleIsFetchingAC = (isFetching) => ({type: toggleIsFetching, isFetching});
+//
 
 export default friendsReducer;

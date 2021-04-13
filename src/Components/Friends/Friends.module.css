@@ -1,3 +1,7 @@
+.friendsInner {
+    position: relative;
+}
+
 .friendsWrapper {
     display: flex;
 }
@@ -32,16 +36,17 @@ text-align: center;
 
 }
 
-.selectedPage {
+.pagination {
+    color: #535353;
+    font-size: 22px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.paginationSelect {
     font-weight: 700;
     text-decoration: underline;
 }
-
-.fff {
-    color: #535353;
-    font-size: 22px;
-}
-
 
 
 

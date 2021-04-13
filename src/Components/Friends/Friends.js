@@ -10,13 +10,13 @@ let Friends = (props) => {
     }
 
     return (
-        <div>
-            <div className={styles.fff}>
+        <div className={styles.friendsInner}>
+            <div className={styles.pagination}>
                 {pages.map(p => {
-                    return <span key={p} className={props.currentPage === p && styles.selectedPage}
-                                 onClick={() => {
-                                     props.onPageChanged(p)
-                                 }}>{p}</span>
+                    return <span key={p} className={props.currentPage === p && styles.paginationSelect}
+                                onClick={() => {
+                                    props.onPageChanged(p)
+                                }}>{p}</span>
                 })}
             </div>
             {
@@ -42,7 +42,7 @@ let Friends = (props) => {
                             <div>
                                 <div>{f.name}</div>
                                 <div>{f.id}</div>
-                                {/*<div>{f.status}</div>*/}
+                                <div>{f.status}</div>
                                 {/*<div>{f.fullName}</div>*/}
                                 {/*<div>{f.status}</div>*/}
                             </div>
