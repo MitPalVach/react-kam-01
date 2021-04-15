@@ -7,14 +7,6 @@ import {
     setFriends,
     setTotalFriendsCount,
     toggleIsFetching
-
-    // followAC,
-    // unfollowAC,
-    // setCurrentPageAC,
-    // setFriendsAC,
-    // setTotalFriendsCountAC,
-    // toggleIsFetchingAC
-
 } from "../../redux/friendsReducer";
 import * as axios from "axios";
 import Friends from "./Friends";
@@ -28,7 +20,8 @@ class FriendsContainer extends React.Component {
             .then(response => {
                 this.props.toggleIsFetching(false);
                 this.props.setFriends(response.data.items);
-                this.props.setTotalFriendsCount(response.data.totalFriendsCount);
+                // this.props.setTotalFriendsCount(response.data.totalFriendsCount);
+                this.props.setTotalFriendsCount(response.data.totalCount);
             });
     }
 
@@ -38,7 +31,7 @@ class FriendsContainer extends React.Component {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.toggleIsFetching(false);
-                this.props.setFriends(response.data.items)
+                this.props.setFriends(response.data.items);
             });
     }
 
@@ -66,29 +59,6 @@ let mapStateToProps = (state) => {
         isFetching: state.friendsPage.isFetching
     }
 }
-//
-// let mapDispatchToProps = (dispatch) => {
-//     return {
-//         follow: (userId) => {
-//             dispatch(followAC(userId))
-//         },
-//         unfollow: (userId) => {
-//             dispatch(unfollowAC(userId))
-//         },
-//         setFriends: (friends) => {
-//             dispatch(setFriendsAC(friends))
-//         },
-//         setCurrentPage: (pageNumber) => {
-//             dispatch(setCurrentPageAC(pageNumber))
-//         },
-//         setTotalFriendsCount: (totalCount) => {
-//             dispatch(setTotalFriendsCountAC(totalCount))
-//         },
-//         toggleIsFetching: (isFetching) => {
-//             dispatch(toggleIsFetchingAC(isFetching))
-//         }
-//     }
-// }
 
 
 export default connect(mapStateToProps, {
@@ -99,12 +69,3 @@ export default connect(mapStateToProps, {
     setTotalFriendsCount,
     toggleIsFetching
 })(FriendsContainer);
-
-// export default connect(mapStateToProps, {
-//     follow: followAC,
-//     unfollow: unfollowAC,
-//     setFriends: setFriendsAC,
-//     setCurrentPage: setCurrentPageAC,
-//     setTotalFriendsCount: setTotalFriendsCountAC,
-//     toggleIsFetching: toggleIsFetchingAC
-// })(FriendsContainer);
