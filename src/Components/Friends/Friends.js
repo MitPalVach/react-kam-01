@@ -1,13 +1,14 @@
 import styles from "./Friends.module.css";
 import React from "react";
 import {NavLink} from "react-router-dom";
+import * as axios from "axios";
 
 
 let Friends = (props) => {
     let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
-        pages.unshift(i);
+        pages.push(i);
     }
 
     return (
@@ -33,11 +34,31 @@ let Friends = (props) => {
                                 {f.followed
                                     ? <button className={styles.friendsBtn}
                                               onClick={() => {
-                                                  props.unfollow(f.id)
+                                                  axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${f.id}`, {
+                                                      withCredentials: true,
+                                                      headers: {
+                                                          "API-KEY" : "753806ff-2793-4166-a0d1-260ed16b9c6e"
+                                                      }
+                                                  })
+                                                      .then(response => {
+                                                          if (response.data.resultCode === 0) {
+                                                              props.unfollow(f.id)
+                                                          }
+                                                      });
                                               }}>Отписаться</button>
                                     : <button className={styles.friendsBtn}
                                               onClick={() => {
-                                                  props.follow(f.id)
+                                                  axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${f.id}`, {}, {
+                                                      withCredentials: true,
+                                                      headers: {
+                                                          "API-KEY" : "753806ff-2793-4166-a0d1-260ed16b9c6e"
+                                                      }
+                                                  })
+                                                      .then(response => {
+                                                          if (response.data.resultCode === 0) {
+                                                              props.follow(f.id)
+                                                          }
+                                                      });
                                               }}>Подписаться</button>}
                             </div>
                         </div>
