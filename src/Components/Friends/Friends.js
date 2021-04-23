@@ -8,7 +8,7 @@ let Friends = (props) => {
     let pagesCount = Math.ceil(props.totalFriendsCount / props.pageSize);
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
+        pages.unshift(i);
     }
 
     return (

@@ -1,0 +1,7 @@
+{
+  "port": 5001,
+  "jwtSecret": "mitpal owls",
+  "mongoUri": "mongodb+srv://mitpal:5101410@cluster0.o83df.mongodb.net/owls?retryWrites=true&w=majority"
+}
+
+
